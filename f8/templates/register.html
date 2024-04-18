@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login_content">
+            <div class="login_heading">
+                <a href="index.html">
+                    <img class="logo" src="https://accounts.fullstack.edu.vn/assets/icon/f8_icon.png">
+                </a>
+                <h1 class="login_title">Đăng Ký vào F8</h1>
+            </div>
+            <div class="login_body">
+                <form action="{{ url_for('register') }}" method="POST">
+                    <div>
+                        <label for="username">Tên người dùng:</label>
+                        <input type="text" id="username" name="username" class="username" required>
+                    </div>
+                    <div>
+                        <label for="password">Mật khẩu:</label>
+                        <input type="password" id="password" name="password" class="password" required>
+                    </div>
+                    <div >
+                        <button type="submit" class="login_button">Đăng nhập</button>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                     <ul class="flash-message">
+                         {% for message in messages %}
+                    <li>{{ message }}</li>
+                  {% endfor %}
+                    </ul>
+                     {% endif %}
+                    {% endwith %}
+                <div>
+                    <p class="donthaveacc">
+                        Bạn đã có tài khoản?
+                        <a href="{{ url_for('login') }}" class="as">Đăng nhập</a>
+                    </p>
+                </div>
+            </div>
+            <div class="login_accecptTerm">
+                Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với
+                <a href="#" class="ad">Điều khoản sử dụng</a>
+                của chúng tôi.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
